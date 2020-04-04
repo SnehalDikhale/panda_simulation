@@ -1,5 +1,5 @@
 # panda_simulation
-Make sure you have installed libfranka 
+Make sure you have installed libfranka for Panda
 
 ```
 mkdir -p catkin_panda/src
@@ -17,5 +17,4 @@ Build the catkin workspace and run the simulation:
 catkin_make -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/path/to/libfranka/build
 source devel/setup.bash
 roslaunch panda_simulation simulation.launch
-```
-Make sure you have libfranka installed for Panda 
+``` 
