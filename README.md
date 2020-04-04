@@ -4,9 +4,10 @@ Make sure you have installed libfranka for Panda
 ```
 mkdir -p catkin_panda/src
 cd catkin_panda/src
-git clone https://github.com/SnehalD14/panda_simulation.git
-git clone https://github.com/erdalpekel/panda_moveit_config.git
 git clone https://github.com/SnehalD14/franka_ros.git
+git clone https://github.com/SnehalD14/panda_simulation.git
+git clone https://github.com/SnehalD14/realsense_camera_plugin.git
+git clone https://github.com/erdalpekel/panda_moveit_config.git
 cd ..
 sudo apt-get install libboost-filesystem-dev
 rosdep install --from-paths src --ignore-src -y --skip-keys libfranka
