@@ -26,4 +26,4 @@ roslaunch panda_simulation simulation.launch
 
 ## Acknowledgement 
 
-This is a modified and extended version of the work done by [erdalpekel](https://github.com/erdalpekel/panda_simulation)
+This is a modified and extended version of the work done by [Erdal Pekel](https://github.com/erdalpekel/panda_simulation)
