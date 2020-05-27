@@ -2,6 +2,8 @@
 
 We placed a Franka Emika Panda Robot on a table in Gazebo and placed an object in front of it. The robot had a Realsense RS200 Camera attached to its wrist and a Panda Parallel Jaw Gripper. The Robot is controlled by MoveIt. 
 
+[gazebo_moveit](images/simualtion.png)
+
 ## Installation
 
 ```
