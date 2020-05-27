@@ -30,13 +30,6 @@
   <depend>moveit_ros_planning_interface</depend>
   <depend>moveit_ros_perception</depend>
   <depend>moveit_visual_tools</depend>
-  <depend>controller_interface</depend>
   <depend>hardware_interface</depend>
 
-  <exec_depend>pluginlib</exec_depend>
-
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <controller_interface plugin="${prefix}/controller_plugins.xml" />
-  </export>
 </package>

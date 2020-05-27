@@ -7,7 +7,6 @@
     <arg name="gui" default="true" />
     <arg name="headless" default="false" />
     <arg name="debug" default="false" />
-    <arg name="load_gripper" default="true" />
 
     <!--launch GAZEBO with own world configuration -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -19,30 +18,27 @@
         <arg name="headless" value="$(arg headless)" />
     </include>
 
+    <!-- Spawn Robot -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -z 1.02 -model panda" />
-
-    <node name="spawn_bowl_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find realsense_gazebo_plugin)/models/realsense_camera/urdf/bar_clamp.urdf -urdf -model bar_clamp -x 0.4 -y 0 -z 1.1" />
+ 
+    <!-- Spawn Object while launching -->
+    <node name="spawn_bowl_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find panda_simulation)/objects/urdf/bar_clamp.urdf -urdf -model bar_clamp -x 0.4 -y 0 -z 1.1" />
     
-
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find panda_simulation)/config/panda_control.yaml" command="load" />
 
-
     <!-- load the controllers -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller panda_arm_controller" />
-    <node if="$(arg load_gripper)" name="controller_spawner_hand" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="panda_hand_controller" />
-
+    <node name="controller_spawner_hand" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="panda_hand_controller" />
 
     <!-- convert joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
-
+  
+    <!-- Launch MoveIt! Rviz -->
     <include file="$(find panda_moveit_config)/launch/planning_context.launch">
         <arg name="load_robot_description" value="true" />
-        <arg name="load_gripper" value="$(arg load_gripper)" />
     </include>
-    <include file="$(find panda_moveit_config)/launch/move_group.launch">
-        <arg name="load_gripper" value="$(arg load_gripper)" />
-    </include>
+    <include file="$(find panda_moveit_config)/launch/move_group.launch" />
     <group if="$(arg gui)">
         <include file="$(find panda_moveit_config)/launch/moveit_rviz.launch" />
     </group>
@@ -52,14 +48,10 @@
     <!-- launch robot control node for moveit motion planning -->
     <node pkg="panda_simulation" type="robot_control_node" name="robot_control_node" output="screen" />
 
-    <!-- load (not start!) custom joint position controller -->
-    <node pkg="controller_manager" type="spawner" name="joint_position_launcher" args="--stopped joint_position_controller" />
-    <node name="controller_finger" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" args="panda_finger_controller " />
-
     <!-- run custom node for automatic intialization -->
     <node pkg="panda_simulation" type="robot_state_initializer_node" name="robot_state_initializer_node" />
 
+    <!--Obtain depth image in Moveit and Gazebo -->
     <include file="$(find realsense_gazebo_plugin)/launch/depth_proc.launch"/>
 
 </launch>

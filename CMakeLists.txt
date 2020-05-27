@@ -42,11 +42,8 @@ catkin_package(CATKIN_DEPENDS
                moveit_core
                moveit_visual_tools
                moveit_ros_planning_interface
-               controller_interface
                hardware_interface
-               pluginlib
-               DEPENDS
-               system_lib)
+               DEPENDS)
 
 # ################################################################################################################################
 # Build ##
@@ -56,13 +53,6 @@ catkin_package(CATKIN_DEPENDS
 include_directories(${catkin_INCLUDE_DIRS})
 
 add_executable(robot_control_node src/robot_control_node.cpp)
-add_executable(robot_state_initializer_node src/robot_state_initializer.cpp)
 
 target_link_libraries(robot_control_node ${catkin_LIBRARIES} boost_filesystem ${JSONCPP_LIBRARIES})
-target_link_libraries(robot_state_initializer_node ${catkin_LIBRARIES})
 
-# add custom controller as library
-add_library(${PROJECT_NAME}_controllers_lib src/joint_position_controller.cpp)
-
-# Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}_controllers_lib ${catkin_LIBRARIES})

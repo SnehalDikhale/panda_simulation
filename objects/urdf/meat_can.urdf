@@ -1,0 +1,32 @@
+<robot name="object">
+  <link name="world" />
+  <link name="object">
+    <visual>
+       <geometry>
+	  <mesh filename="package://panda_simulation/objects/meat_can.dae"/>
+	</geometry>
+    </visual>
+    <collision>
+       <geometry>
+	  <mesh filename="package://panda_simulation/objects/meat_can.dae"/>
+	</geometry>
+    </collision>
+	<inertial>
+		<mass value="0.37"/>
+		<inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
+	</inertial>
+  </link>
+
+  <gazebo reference="object">
+      <dampingFactor>0.005</dampingFactor>
+      <kp>1000000</kp>
+      <kd>1.0</kd>
+      <mu1>100.0</mu1>
+      <mu2>100.0</mu2>
+      <minDepth>0.001</minDepth>
+  </gazebo>
+  <joint name="joint1" type="floating">
+    <parent link="world"/>
+    <child link="object"/>
+  </joint>
+</robot>
