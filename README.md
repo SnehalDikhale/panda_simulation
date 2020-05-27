@@ -1,22 +1,21 @@
-# panda_simulation
+# Panda Simulation Environment (Gazebo + MoveIt!)
 
-![Panda in Gazebo](assets/panda-in-gazebo.png?raw=true "Panda in Gazebo")
+We placed a Franka Emika Panda Robot on a table in Gazebo and placed an object in front of it. The robot had a Realsense RS200 Camera attached to its wrist and a Panda Parallel Jaw Gripper. The Robot is controlled by MoveIt. 
 
+## Installation
 
 ```
 mkdir -p catkin_ws/src
 cd catkin_ws/src
-git clone https://github.com/erdalpekel/panda_simulation.git
-git clone https://github.com/erdalpekel/panda_moveit_config.git
-git clone --branch simulation https://github.com/erdalpekel/franka_ros.git
+git clone https://github.com/SnehalD14/panda_simulation.git
+git clone https://github.com/SnehalD14/panda_moveit_config.git
+git clone --branch simulation https://github.com/SnehalD14/franka_ros.git
 cd ..
 sudo apt-get install libboost-filesystem-dev
 rosdep install --from-paths src --ignore-src -y --skip-keys libfranka
 cd ..
 ```
 It is also important that you build the *libfranka* library from source and pass its directory to *catkin_make*  when building this ROS package as described in [this tutorial](https://frankaemika.github.io/docs/installation.html#building-from-source).
-
-Currently it includes a controller parameter config file and a launch file to launch the [Gazebo](http://gazebosim.org) simulation environment and the Panda robot from FRANKA EMIKA in it with the necessary controllers.
 
 Build the catkin workspace and run the simulation:
 ```
@@ -25,13 +24,6 @@ source devel/setup.bash
 roslaunch panda_simulation simulation.launch
 ```
 
-Depending on your operating systems language you might need to export the numeric type so that rviz can read the floating point numbers in the robot model correctly:
+## Acknowledgement 
 
-```
-export LC_NUMERIC="en_US.UTF-8"
-```
-Otherwise, the robot will appear in rviz in a collapsed state.
-
-
-You can see the full explanation in my [blog post](https://erdalpekel.de/?p=55).
-
+This is a modified and extended version of the work done by [erdalpekel](https://github.com/erdalpekel/panda_simulation)
