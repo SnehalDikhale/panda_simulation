@@ -28,7 +28,7 @@ roslaunch panda_simulation simulation.launch
 
 ## Spawning other objects 
 
-The ```simulation.launch``` spawns the bar_clamp but you can spawn any objects in the workspace. To spawn a object from the ```objects``` folder, you can type the following command in a new terminal
+The ```simulation.launch``` spawns the bar_clamp but you can spawn any objects in the workspace. To spawn an object from the ```objects``` folder, you can type the following command in a new terminal
 
 ```
 rosrun gazebo_ros spawn_model -file `pwd`/strawberry.urdf -urdf -x 0.4 -y 0 -z 1.1 -model strawberry
