@@ -28,7 +28,7 @@ roslaunch panda_simulation simulation.launch
 ```
 ## Ready state
 
-The ```ready state``` of the robot can be set in Set Goal State tab in Moveit! Rviz. To modify the ready state or add another state, you will have to modify the config/panda_arm.xacro file in ```panda_moveit_config```
+The ```ready state``` of the robot can be set in _Set Goal State_ tab in Moveit! Rviz. To modify the ready state or add another state, you will have to modify the config/panda_arm.xacro file in ```panda_moveit_config```
 
 ## Spawning other objects 
 
