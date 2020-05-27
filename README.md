@@ -26,7 +26,9 @@ catkin_make -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/path/to/libfranka/
 source devel/setup.bash
 roslaunch panda_simulation simulation.launch
 ```
+## Ready state
 
+The ```ready state``` of the robot can be set in Moveit! Rviz. To modify the ready state or add another state, you will have to modify the config/panda_arm.xacro file in ```panda_moveit_config```
 
 ## Spawning other objects 
 
