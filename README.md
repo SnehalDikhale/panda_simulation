@@ -10,6 +10,7 @@ cd catkin_ws/src
 git clone https://github.com/SnehalD14/panda_simulation.git
 git clone https://github.com/SnehalD14/panda_moveit_config.git
 git clone --branch simulation https://github.com/SnehalD14/franka_ros.git
+git clone --branch simulation https://github.com/SnehalD14/realsense_gazebo_plugin.git
 cd ..
 sudo apt-get install libboost-filesystem-dev
 rosdep install --from-paths src --ignore-src -y --skip-keys libfranka
@@ -23,6 +24,16 @@ catkin_make -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/path/to/libfranka/
 source devel/setup.bash
 roslaunch panda_simulation simulation.launch
 ```
+## Spawning other objects 
+
+You can spawn any objects in the workspace. To spawn a object from the ```objects folder```, you can type the following command in a new terminal
+
+```
+rosrun gazebo_ros spawn_model -file `pwd`/strawberry.urdf -urdf -x 0.4 -y 0 -z 1.1 -model strawberry
+```
+where ```pwd``` stands for present working directory 
+
+Replace the name of the urdf and the name of the model accordingly
 
 ## Acknowledgement 
 
