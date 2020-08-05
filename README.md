@@ -11,8 +11,8 @@ mkdir -p catkin_ws/src
 cd catkin_ws/src
 git clone https://github.com/SnehalD14/panda_simulation.git
 git clone https://github.com/SnehalD14/panda_moveit_config.git
-git clone --branch simulation https://github.com/SnehalD14/franka_ros.git
-git clone --branch simulation https://github.com/SnehalD14/realsense_gazebo_plugin.git
+git clone https://github.com/SnehalD14/franka_ros.git
+git clone https://github.com/SnehalD14/realsense_gazebo_plugin.git
 cd ..
 sudo apt-get install libboost-filesystem-dev
 rosdep install --from-paths src --ignore-src -y --skip-keys libfranka
